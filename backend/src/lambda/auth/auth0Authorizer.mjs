@@ -1,10 +1,7 @@
-import Axios from 'axios'
 import jsonwebtoken from 'jsonwebtoken'
 import { createLogger } from '../../utils/logger.mjs'
 
 const logger = createLogger('auth')
-
-// const jwksUrl = 'https://dev-psgwcpa0ttqk80ay.us.auth0.com/.well-known/jwks.json'
 
 const CERTIFICATE = `-----BEGIN CERTIFICATE-----
 MIIDHTCCAgWgAwIBAgIJdGrr9t0fTnWCMA0GCSqGSIb3DQEBCwUAMCwxKjAoBgNV
@@ -61,24 +58,6 @@ export async function handler(event) {
     }
   }
 }
-
-// async function verifyToken(authHeader) {
-//   const token = getToken(authHeader)
-//   const jwt = jsonwebtoken.decode(token, { complete: true })
-
-//   const _res = await Axios.get(jwksUrl);
-//   const keys = _res.data.keys;
-//   const signKeys = keys.find(key => key.kid === jwt.header.kid);
-
-//   if(!signKeys) throw new Error("Incorrect Keys");
-//   const pemDT = signKeys.x5c[0];
-//   const secret = `-----BEGIN CERTIFICATE-----\n${pemDT}\n-----END CERTIFICATE-----\n`;;
-
-//   const verifyToken = verify(token,secret, {algorithms: ['RS256']});
-
-//   logger.info('Verify token', verifyToken);
-//   return verifyToken;
-// }
 
 async function verifyToken(authHeader) {
   const token = getToken(authHeader)

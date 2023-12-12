@@ -40,7 +40,7 @@ export function Todos() {
                 />
               </Grid.Column>
               <Grid.Column width={10} verticalAlign="middle">
-                {todo.todoId}
+                {todo.name}
               </Grid.Column>
               <Grid.Column width={3} floated="right">
                 {todo.dueDate}
